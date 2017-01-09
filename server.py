@@ -17,6 +17,12 @@ class HelloWorldService(ServiceBase):
         for i in range(times):
             yield u'Hello, %s' % name
 
+    @rpc(_returns=Iterable(Unicode))
+    def t(ctx):
+        yield 'test'
+
+
+
 
 application = Application([HelloWorldService], 'spyne.examples.hello.soap',
                           in_protocol=Soap11(validator='lxml'),
